@@ -26,4 +26,6 @@ public interface CityService {
     void deleteAll(Iterable<City> var1);
 
     void deleteAll();
+
+    City findByName(String name);
 }

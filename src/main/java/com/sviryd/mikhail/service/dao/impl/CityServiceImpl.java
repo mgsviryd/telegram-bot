@@ -67,4 +67,9 @@ public class CityServiceImpl implements CityService {
     public void deleteAll() {
         cityRepo.deleteAll();
     }
+
+    @Override
+    public City findByName(String name) {
+        return cityRepo.findByName(name);
+    }
 }
