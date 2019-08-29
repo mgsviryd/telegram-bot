@@ -18,5 +18,5 @@ public class City {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String guideMessage;
+    private String information;
 }
