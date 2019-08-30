@@ -1,9 +1,9 @@
 package com.sviryd.mikhail.controller;
 
-import com.sviryd.mikhail.controller.exception.CityNotFoundException;
 import com.sviryd.mikhail.dao.entity.City;
 import com.sviryd.mikhail.service.dao.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import java.net.URI;
+
 import java.util.Optional;
 
 @RestController
@@ -24,42 +25,44 @@ public class CityController {
     private CityService cityService;
 
     @PostMapping
-    public ResponseEntity<Object> save(@RequestBody City city) {
-        City savedCity = cityService.save(city);
-
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(savedCity.getId()).toUri();
-
-        return ResponseEntity.created(location).build();
+    @ResponseStatus(HttpStatus.OK)
+    public void add(@RequestBody City city) {
+        cityService.save(city);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@RequestBody City city, @PathVariable Long id) {
-        Optional<City> storedCity = cityService.findById(id);
+    @ResponseBody
+    public ResponseEntity<City> update(@RequestBody City city, @PathVariable Long id) {
+        final Optional<City> storedCity = cityService.findById(id);
         if (!storedCity.isPresent())
-            return ResponseEntity.notFound().build();
-
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         city.setId(id);
-        cityService.save(city);
-
-        return ResponseEntity.noContent().build();
+        final City savedCity = cityService.save(city);
+        return new ResponseEntity<>(savedCity, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public City findById(@PathVariable Long id) throws CityNotFoundException {
+    @ResponseBody
+    public ResponseEntity<City> findById(@PathVariable Long id) {
         Optional<City> city = cityService.findById(id);
         if (!city.isPresent()) {
-            throw new CityNotFoundException("id-" + id);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return city.get();
+        return new ResponseEntity<>(city.get(), HttpStatus.OK);
     }
 
-    @GetMapping
-    public Iterable<City> findAll() {
-        return cityService.findAll();
+    @GetMapping("/{name}")
+    @ResponseBody
+    public ResponseEntity<City> findByName(@PathVariable String name) {
+        final City city = cityService.findByName(name);
+        if (city == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(city, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void deleteById(@PathVariable Long id) {
         cityService.deleteById(id);
     }
