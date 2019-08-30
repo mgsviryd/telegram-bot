@@ -5,25 +5,25 @@ import com.sviryd.mikhail.dao.entity.City;
 import java.util.Optional;
 
 public interface CityService {
-    City save(City var1);
+    City save(City city);
 
-    Iterable<City> saveAll(Iterable<City> var1);
+    Iterable<City> saveAll(Iterable<City> cities);
 
-    Optional<City> findById(Long var1);
+    Optional<City> findById(Long id);
 
-    boolean existsById(Long var1);
+    boolean existsById(Long id);
 
     Iterable<City> findAll();
 
-    Iterable<City> findAllById(Iterable<Long> var1);
+    Iterable<City> findAllById(Iterable<Long> ids);
 
     long count();
 
-    void deleteById(Long var1);
+    void deleteById(Long id);
 
-    void delete(City var1);
+    void delete(City city);
 
-    void deleteAll(Iterable<City> var1);
+    void deleteAll(Iterable<City> cities);
 
     void deleteAll();
 
