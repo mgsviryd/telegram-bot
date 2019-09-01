@@ -1,8 +1,8 @@
-package com.sviryd.mikhail.service.dao.impl;
+package com.sviryd.mikhail.service.repos.impl;
 
-import com.sviryd.mikhail.dao.entity.City;
+import com.sviryd.mikhail.entity.City;
 import com.sviryd.mikhail.repos.CityRepo;
-import com.sviryd.mikhail.service.dao.CityService;
+import com.sviryd.mikhail.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +10,12 @@ import java.util.Optional;
 
 @Service
 public class CityServiceImpl implements CityService {
+    private final CityRepo cityRepo;
+
     @Autowired
-    private CityRepo cityRepo;
+    public CityServiceImpl(CityRepo cityRepo) {
+        this.cityRepo = cityRepo;
+    }
 
     @Override
     public City save(City city) {
@@ -69,7 +73,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public City findByName(String name) {
+    public Optional<City> findByName(String name) {
         return cityRepo.findByName(name);
     }
 }

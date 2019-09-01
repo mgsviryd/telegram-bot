@@ -1,4 +1,4 @@
-package com.sviryd.mikhail.service.repos;
+package com.sviryd.mikhail.service;
 
 import com.sviryd.mikhail.entity.City;
 
@@ -27,5 +27,5 @@ public interface CityService {
 
     void deleteAll();
 
-    City findByName(String name);
+    Optional<City> findByName(String name);
 }

@@ -1,4 +1,4 @@
-package com.sviryd.mikhail.dao.entity;
+package com.sviryd.mikhail.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
