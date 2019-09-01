@@ -1,6 +1,6 @@
-package com.sviryd.mikhail.service.dao;
+package com.sviryd.mikhail.service.repos;
 
-import com.sviryd.mikhail.dao.entity.City;
+import com.sviryd.mikhail.entity.City;
 
 import java.util.Optional;
 
