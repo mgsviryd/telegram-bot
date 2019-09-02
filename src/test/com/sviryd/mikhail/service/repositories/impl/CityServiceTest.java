@@ -1,8 +1,8 @@
 
-package com.sviryd.mikhail.service.repos.impl;
+package com.sviryd.mikhail.service.repositories.impl;
 
 import com.sviryd.mikhail.entity.City;
-import com.sviryd.mikhail.repositories.CityReporitory;
+import com.sviryd.mikhail.repositories.CityRepository;
 import com.sviryd.mikhail.service.CityService;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
@@ -22,7 +22,7 @@ public class CityServiceTest {
     @Autowired
     private CityService cityService;
     @MockBean
-    private CityReporitory cityReporitory;
+    private CityRepository cityRepository;
 
     @Test
     public void autowired(){
@@ -32,10 +32,9 @@ public class CityServiceTest {
     @Test
     public void testSave() throws Exception {
         City city = new City();
-        city.setName("Moscow");
         City save = cityService.save(city);
         Assert.assertNotNull(save);
-        Mockito.verify(cityReporitory, Mockito.times(1)).save(city);
+        Mockito.verify(cityRepository, Mockito.times(1)).save(city);
     }
 
     @Test
@@ -44,11 +43,11 @@ public class CityServiceTest {
         String name = "Moscow";
         city.setName(name);
         Mockito.doReturn(Optional.of(new City()))
-                .when(cityReporitory)
+                .when(cityRepository)
                 .findByName(name);
         City save = cityService.save(city);
         Assert.assertNull(save);
-        Mockito.verify(cityReporitory, Mockito.times(1)).save(city);
+        Mockito.verify(cityRepository, Mockito.times(1)).save(city);
     }
 
     @Test
@@ -57,11 +56,11 @@ public class CityServiceTest {
         Long id = 1L;
         city.setId(id);
         Mockito.doReturn(Optional.of(new City()))
-                .when(cityReporitory)
+                .when(cityRepository)
                 .findById(id);
         Optional<City> cityOptional = cityService.findById(id);
         Assert.assertTrue(cityOptional.isPresent());
-        Mockito.verify(cityReporitory, Mockito.times(1)).findById(id);
+        Mockito.verify(cityRepository, Mockito.times(1)).findById(id);
     }
 
     @Test
@@ -71,14 +70,14 @@ public class CityServiceTest {
         city.setId(id);
         Optional<City> cityOptional = cityService.findById(id);
         Assert.assertFalse(cityOptional.isPresent());
-        Mockito.verify(cityReporitory, Mockito.times(1)).findById(id);
+        Mockito.verify(cityRepository, Mockito.times(1)).findById(id);
     }
 
     @Test
     public void testDeleteById() throws Exception {
         Long id = 1L;
         cityService.deleteById(id);
-        Mockito.verify(cityReporitory, Mockito.times(1)).deleteById(id);
+        Mockito.verify(cityRepository, Mockito.times(1)).deleteById(id);
     }
 
     @Test
@@ -87,11 +86,11 @@ public class CityServiceTest {
         String name = "Moscow";
         city.setName(name);
         Mockito.doReturn(Optional.of(new City()))
-                .when(cityReporitory)
+                .when(cityRepository)
                 .findByName(name);
         Optional<City> cityOptional = cityService.findByName(name);
         Assert.assertTrue(cityOptional.isPresent());
-        Mockito.verify(cityReporitory, Mockito.times(1)).findByName(name);
+        Mockito.verify(cityRepository, Mockito.times(1)).findByName(name);
     }
     @Test
     public void testFindByNameFail() throws Exception {
@@ -100,6 +99,6 @@ public class CityServiceTest {
         city.setName(name);
         Optional<City> cityOptional = cityService.findByName(name);
         Assert.assertFalse(cityOptional.isPresent());
-        Mockito.verify(cityReporitory, Mockito.times(1)).findByName(name);
+        Mockito.verify(cityRepository, Mockito.times(1)).findByName(name);
     }
 }
