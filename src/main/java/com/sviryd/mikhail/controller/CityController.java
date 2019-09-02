@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -28,13 +30,13 @@ public class CityController {
     }
 
     @PostMapping
-    public void add(@RequestBody City city) {
-        cityService.save(city);
+    @ResponseStatus(HttpStatus.CREATED)
+    public City save(@Valid @RequestBody City city) {
+        return cityService.save(city);
     }
 
     @PutMapping("/{id}")
-    @ResponseBody
-    public City update(@RequestBody City city, @PathVariable Long id) {
+    public City update(@Valid @RequestBody City city, @PathVariable Long id) {
         Optional<City> cityOptional = cityService.findById(id);
         cityOptional.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "The city is not found."));
         city.setId(id);
@@ -42,20 +44,19 @@ public class CityController {
     }
 
     @GetMapping("/{id}")
-    @ResponseBody
     public City findById(@PathVariable Long id) {
         Optional<City> cityOptional = cityService.findById(id);
         return cityOptional.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "The city is not found."));
     }
 
-    @GetMapping("/{name}")
-    @ResponseBody
+    @GetMapping("/filtering/byName/{name}")
     public City findByName(@PathVariable String name) {
         Optional<City> cityOptional = cityService.findByName(name);
         return cityOptional.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "The city is not found."));
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void deleteById(@PathVariable Long id) {
         cityService.deleteById(id);
     }
