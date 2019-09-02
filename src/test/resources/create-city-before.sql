@@ -1,3 +1,3 @@
-delete from city;
-insert into city(id,city,information) VALUES
-  (1,'Moscow','')
+DELETE FROM city;
+INSERT INTO city (id, name, information) VALUES
+  (1, 'Moscow', 'Moscow in the capital of Russia.')
