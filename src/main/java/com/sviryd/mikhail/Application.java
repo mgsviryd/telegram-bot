@@ -1,9 +1,10 @@
 package com.sviryd.mikhail;
 
-import com.sviryd.mikhail.service.telegram.bot.CityGuideTelegramBotService;
+import com.sviryd.mikhail.service.telegram.bot.CityGuideTelegramBotServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
@@ -15,10 +16,10 @@ public class Application implements CommandLineRunner {
         ApiContextInitializer.init();
     }
 
-    private final CityGuideTelegramBotService service;
+    private final CityGuideTelegramBotServiceImpl service;
 
     @Autowired
-    public Application(CityGuideTelegramBotService service) {
+    public Application(CityGuideTelegramBotServiceImpl service) {
         this.service = service;
     }
 
