@@ -1,7 +1,7 @@
-package com.sviryd.mikhail.service.repos.impl;
+package com.sviryd.mikhail.service.repositories.impl;
 
 import com.sviryd.mikhail.entity.City;
-import com.sviryd.mikhail.repositories.CityReporitory;
+import com.sviryd.mikhail.repositories.CityRepository;
 import com.sviryd.mikhail.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,70 +10,70 @@ import java.util.Optional;
 
 @Service
 public class CityServiceImpl implements CityService {
-    private final CityReporitory cityReporitory;
+    private final CityRepository cityRepository;
 
     @Autowired
-    public CityServiceImpl(CityReporitory cityReporitory) {
-        this.cityReporitory = cityReporitory;
+    public CityServiceImpl(CityRepository cityRepository) {
+        this.cityRepository = cityRepository;
     }
 
     @Override
     public City save(City city) {
-        return cityReporitory.save(city);
+        return cityRepository.save(city);
     }
 
     @Override
     public Iterable<City> saveAll(Iterable<City> cities) {
-        return cityReporitory.saveAll(cities);
+        return cityRepository.saveAll(cities);
     }
 
     @Override
     public Optional<City> findById(Long id) {
-        return cityReporitory.findById(id);
+        return cityRepository.findById(id);
     }
 
     @Override
     public boolean existsById(Long id) {
-        return cityReporitory.existsById(id);
+        return cityRepository.existsById(id);
     }
 
     @Override
     public Iterable<City> findAll() {
-        return cityReporitory.findAll();
+        return cityRepository.findAll();
     }
 
     @Override
     public Iterable<City> findAllById(Iterable<Long> ids) {
-        return cityReporitory.findAllById(ids);
+        return cityRepository.findAllById(ids);
     }
 
     @Override
     public long count() {
-        return cityReporitory.count();
+        return cityRepository.count();
     }
 
     @Override
     public void deleteById(Long id) {
-        cityReporitory.deleteById(id);
+        cityRepository.deleteById(id);
     }
 
     @Override
     public void delete(City city) {
-        cityReporitory.delete(city);
+        cityRepository.delete(city);
     }
 
     @Override
     public void deleteAll(Iterable<City> cities) {
-        cityReporitory.deleteAll(cities);
+        cityRepository.deleteAll(cities);
     }
 
     @Override
     public void deleteAll() {
-        cityReporitory.deleteAll();
+        cityRepository.deleteAll();
     }
 
     @Override
     public Optional<City> findByName(String name) {
-        return cityReporitory.findByName(name);
+        return cityRepository.findByName(name);
     }
 }
