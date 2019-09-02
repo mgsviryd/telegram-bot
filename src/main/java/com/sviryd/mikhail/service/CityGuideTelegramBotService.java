@@ -1,4 +1,9 @@
-package com.sviryd.mikhail.service.telegram.bot;
+package com.sviryd.mikhail.service;
 
-public interface ICityGuideTelegramBotService {
+import org.telegram.telegrambots.meta.api.objects.Update;
+
+public interface CityGuideTelegramBotService {
+    void onUpdateReceived(Update update);
+    String getBotUsername();
+    String getBotToken();
 }

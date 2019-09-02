@@ -2,6 +2,7 @@ package com.sviryd.mikhail.service.telegram.bot;
 
 import com.sviryd.mikhail.config.CityGuideTelegramBotConfig;
 import com.sviryd.mikhail.entity.City;
+import com.sviryd.mikhail.service.CityGuideTelegramBotService;
 import com.sviryd.mikhail.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +16,13 @@ import java.text.MessageFormat;
 import java.util.Optional;
 
 @Service
-public class CityGuideTelegramBotService extends TelegramLongPollingBot {
+public class CityGuideTelegramBotServiceImpl extends TelegramLongPollingBot implements CityGuideTelegramBotService {
     private static final String CITY_NOT_FOUND_MSG = "The city {0} is not found.";
     private final CityGuideTelegramBotConfig config;
     private final CityService cityService;
 
     @Autowired
-    public CityGuideTelegramBotService(CityGuideTelegramBotConfig config, CityService cityService) {
+    public CityGuideTelegramBotServiceImpl(CityGuideTelegramBotConfig config, CityService cityService) {
         this.config = config;
         this.cityService = cityService;
     }
