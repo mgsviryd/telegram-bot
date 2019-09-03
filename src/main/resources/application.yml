@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url:  jdbc:mysql://localhost:3306/interview?serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    generate-ddl: false
+    show-sql: false
+    hibernate.ddl-auto: validate
