@@ -1,4 +1,4 @@
-package com.sviryd.mikhail.service.repositories.impl;
+package com.sviryd.mikhail.service.impl;
 
 import com.sviryd.mikhail.entity.City;
 import com.sviryd.mikhail.repositories.CityRepository;
