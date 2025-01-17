@@ -1,8 +1,8 @@
-package com.sviryd.mikhail.service.impl;
+package com.sviryd.telegram_bot.service.impl;
 
-import com.sviryd.mikhail.entity.City;
-import com.sviryd.mikhail.repositories.CityRepository;
-import com.sviryd.mikhail.service.CityService;
+import com.sviryd.telegram_bot.entity.City;
+import com.sviryd.telegram_bot.repositories.CityRepository;
+import com.sviryd.telegram_bot.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

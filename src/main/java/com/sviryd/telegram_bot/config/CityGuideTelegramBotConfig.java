@@ -1,4 +1,4 @@
-package com.sviryd.mikhail.config;
+package com.sviryd.telegram_bot.config;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
-package com.sviryd.mikhail.service;
+package com.sviryd.telegram_bot.service;
 
-import com.sviryd.mikhail.entity.City;
+import com.sviryd.telegram_bot.entity.City;
 
 import java.util.Optional;
 

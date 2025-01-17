@@ -1,9 +1,9 @@
-package com.sviryd.mikhail.service.telegram.bot;
+package com.sviryd.telegram_bot.service.telegram.bot;
 
-import com.sviryd.mikhail.config.CityGuideTelegramBotConfig;
-import com.sviryd.mikhail.entity.City;
-import com.sviryd.mikhail.service.CityGuideTelegramBotService;
-import com.sviryd.mikhail.service.CityService;
+import com.sviryd.telegram_bot.config.CityGuideTelegramBotConfig;
+import com.sviryd.telegram_bot.entity.City;
+import com.sviryd.telegram_bot.service.CityGuideTelegramBotService;
+import com.sviryd.telegram_bot.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;

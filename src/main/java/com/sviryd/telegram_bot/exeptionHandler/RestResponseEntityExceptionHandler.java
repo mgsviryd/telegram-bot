@@ -1,4 +1,4 @@
-package com.sviryd.mikhail.exeptionHandler;
+package com.sviryd.telegram_bot.exeptionHandler;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

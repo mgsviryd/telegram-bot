@@ -1,6 +1,6 @@
-package com.sviryd.mikhail.repositories;
+package com.sviryd.telegram_bot.repositories;
 
-import com.sviryd.mikhail.entity.City;
+import com.sviryd.telegram_bot.entity.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

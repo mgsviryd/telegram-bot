@@ -1,7 +1,7 @@
-package com.sviryd.mikhail.controller;
+package com.sviryd.telegram_bot.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sviryd.mikhail.entity.City;
+import com.sviryd.telegram_bot.entity.City;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

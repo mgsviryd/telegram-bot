@@ -1,6 +1,6 @@
-package com.sviryd.mikhail;
+package com.sviryd.telegram_bot;
 
-import com.sviryd.mikhail.service.telegram.bot.CityGuideTelegramBotServiceImpl;
+import com.sviryd.telegram_bot.service.telegram.bot.CityGuideTelegramBotServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
