@@ -1,6 +1,12 @@
-# OnTravelSolutions java junior assignment
+# Completing of OnTravelSolutions assignment
+
+## Task:
+* Тестовое задание.docx
+
+## Features:
 * create Telegram bot
 * implement RESTful web service
+
 
 ## City Guide Bot
 * bot.city-guide.username = cityGuideForOnTravelSolutionsBot

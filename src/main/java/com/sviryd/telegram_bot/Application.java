@@ -1,6 +1,6 @@
 package com.sviryd.telegram_bot;
 
-import com.sviryd.telegram_bot.service.telegram.bot.CityGuideTelegramBotServiceImpl;
+import com.sviryd.telegram_bot.service.telegram.bot.CityGuideTelegramBotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,10 +15,10 @@ public class Application implements CommandLineRunner {
         ApiContextInitializer.init();
     }
 
-    private final CityGuideTelegramBotServiceImpl service;
+    private final CityGuideTelegramBotService service;
 
     @Autowired
-    public Application(CityGuideTelegramBotServiceImpl service) {
+    public Application(CityGuideTelegramBotService service) {
         this.service = service;
     }
 

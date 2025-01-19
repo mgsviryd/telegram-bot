@@ -1,17 +1,12 @@
 package com.sviryd.telegram_bot.entity;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,9 +19,9 @@ public class City {
     private Long id;
     @Column(unique = true)
     @NotBlank(message = "Name cannot be blank.")
-    @Length(max = 255)
+    @Size(max = 255)
     private String name;
     @NotBlank(message = "Information cannot be blank.")
-    @Length(max = 2048)
+    @Size(max = 2048)
     private String information;
 }

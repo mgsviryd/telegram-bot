@@ -2,7 +2,6 @@ package com.sviryd.telegram_bot.service.telegram.bot;
 
 import com.sviryd.telegram_bot.config.CityGuideTelegramBotConfig;
 import com.sviryd.telegram_bot.entity.City;
-import com.sviryd.telegram_bot.service.CityGuideTelegramBotService;
 import com.sviryd.telegram_bot.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,13 +15,13 @@ import java.text.MessageFormat;
 import java.util.Optional;
 
 @Service
-public class CityGuideTelegramBotServiceImpl extends TelegramLongPollingBot implements CityGuideTelegramBotService {
+public class CityGuideTelegramBotService extends TelegramLongPollingBot {
     private static final String CITY_NOT_FOUND_MSG = "The city {0} is not found.";
     private final CityGuideTelegramBotConfig config;
     private final CityService cityService;
 
     @Autowired
-    public CityGuideTelegramBotServiceImpl(CityGuideTelegramBotConfig config, CityService cityService) {
+    public CityGuideTelegramBotService(CityGuideTelegramBotConfig config, CityService cityService) {
         this.config = config;
         this.cityService = cityService;
     }
@@ -45,7 +44,7 @@ public class CityGuideTelegramBotServiceImpl extends TelegramLongPollingBot impl
             try {
                 execute(message);
             } catch (TelegramApiException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
     }

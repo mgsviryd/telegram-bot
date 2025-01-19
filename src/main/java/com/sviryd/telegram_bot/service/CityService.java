@@ -1,31 +1,66 @@
 package com.sviryd.telegram_bot.service;
 
 import com.sviryd.telegram_bot.entity.City;
+import com.sviryd.telegram_bot.repo.CityRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-public interface CityService {
-    City save(City city);
+@Service
+public class CityService {
+    private final CityRepo cityRepo;
 
-    Iterable<City> saveAll(Iterable<City> cities);
+    @Autowired
+    public CityService(CityRepo cityRepo) {
+        this.cityRepo = cityRepo;
+    }
 
-    Optional<City> findById(Long id);
+    public City save(City city) {
+        return cityRepo.save(city);
+    }
 
-    boolean existsById(Long id);
+    public Iterable<City> saveAll(Iterable<City> cities) {
+        return cityRepo.saveAll(cities);
+    }
 
-    Iterable<City> findAll();
+    public Optional<City> findById(Long id) {
+        return cityRepo.findById(id);
+    }
 
-    Iterable<City> findAllById(Iterable<Long> ids);
+    public boolean existsById(Long id) {
+        return cityRepo.existsById(id);
+    }
 
-    long count();
+    public Iterable<City> findAll() {
+        return cityRepo.findAll();
+    }
 
-    void deleteById(Long id);
+    public Iterable<City> findAllById(Iterable<Long> ids) {
+        return cityRepo.findAllById(ids);
+    }
 
-    void delete(City city);
+    public long count() {
+        return cityRepo.count();
+    }
 
-    void deleteAll(Iterable<City> cities);
+    public void deleteById(Long id) {
+        cityRepo.deleteById(id);
+    }
 
-    void deleteAll();
+    public void delete(City city) {
+        cityRepo.delete(city);
+    }
 
-    Optional<City> findByName(String name);
+    public void deleteAll(Iterable<City> cities) {
+        cityRepo.deleteAll(cities);
+    }
+
+    public void deleteAll() {
+        cityRepo.deleteAll();
+    }
+
+    public Optional<City> findByName(String name) {
+        return cityRepo.findByName(name);
+    }
 }
