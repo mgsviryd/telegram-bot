@@ -1,1 +1,1 @@
-DELETE FROM city;
+DELETE FROM bot.city;

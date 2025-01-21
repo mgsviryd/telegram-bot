@@ -1,6 +1,7 @@
 package com.sviryd.telegram_bot.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sviryd.telegram_bot.controller.rest.CityRestController;
 import com.sviryd.telegram_bot.entity.City;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,11 +26,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("it")
 @Sql(value = {"/init-db-city-before.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Sql(value = {"/cleanup-db-city-after.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
-public class CityControllerIT {
+public class CityRestControllerIT {
     @Autowired
     private MockMvc mvc;
     @Autowired
-    private CityController cityController;
+    private CityRestController cityRestController;
     private City city;
 
     @BeforeEach
@@ -47,7 +48,7 @@ public class CityControllerIT {
 
     @Test
     public void autoriwedCityController() {
-        assertThat(cityController).isNotNull();
+        assertThat(cityRestController).isNotNull();
     }
 
     @Test

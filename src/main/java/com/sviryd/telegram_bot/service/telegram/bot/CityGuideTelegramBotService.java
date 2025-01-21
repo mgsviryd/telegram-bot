@@ -1,51 +1,35 @@
 package com.sviryd.telegram_bot.service.telegram.bot;
 
-import com.sviryd.telegram_bot.config.CityGuideTelegramBotConfig;
 import com.sviryd.telegram_bot.entity.City;
 import com.sviryd.telegram_bot.service.CityService;
+import com.sviryd.telegram_bot.vo.TelegramMessageVO;
+import com.sviryd.telegram_bot.vo.TelegramUpdateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
-import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.text.MessageFormat;
 import java.util.Optional;
 
 @Service
-public class CityGuideTelegramBotService extends TelegramLongPollingBot {
+public class CityGuideTelegramBotService {
     private static final String CITY_NOT_FOUND_MSG = "The city {0} is not found.";
-    private final CityGuideTelegramBotConfig config;
     private final CityService cityService;
 
+    private final TelegramSenderService senderService;
+
     @Autowired
-    public CityGuideTelegramBotService(CityGuideTelegramBotConfig config, CityService cityService) {
-        this.config = config;
+    public CityGuideTelegramBotService(CityService cityService, TelegramSenderService senderService) {
         this.cityService = cityService;
+        this.senderService = senderService;
     }
 
-
-    @Override
-    public void onUpdateReceived(Update update) {
-        if (!update.hasMessage()) {
-            return;
-        }
-
-        Message incomeMsg = update.getMessage();
-        if (incomeMsg.hasText()) {
-            String messageText = incomeMsg.getText();
-            String information = getCityInformation(messageText);
-
-            SendMessage message = new SendMessage()
-                    .setChatId(incomeMsg.getChatId())
-                    .setText(information);
-            try {
-                execute(message);
-            } catch (TelegramApiException e) {
-                throw new RuntimeException(e);
-            }
+    public void processUpdate(String botToken, TelegramUpdateVO update) {
+        TelegramMessageVO message = update.getMessage();
+        if (message.getChat() != null) {
+            Long chatId = message.getChat().getId();
+            String text = message.getText();
+            String information = getCityInformation(text);
+            senderService.sendMessage(botToken, chatId, information);
         }
     }
 
@@ -54,15 +38,5 @@ public class CityGuideTelegramBotService extends TelegramLongPollingBot {
         return city
                 .map(City::getInformation)
                 .orElseGet(() -> MessageFormat.format(CITY_NOT_FOUND_MSG, messageText));
-    }
-
-    @Override
-    public String getBotUsername() {
-        return config.getUsername();
-    }
-
-    @Override
-    public String getBotToken() {
-        return config.getToken();
     }
 }

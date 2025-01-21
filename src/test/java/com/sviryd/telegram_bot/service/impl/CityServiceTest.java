@@ -15,15 +15,13 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = {CityService.class})
 @ActiveProfiles("it")
-public class CityServiceIT {
+public class CityServiceTest {
     @Autowired
     private CityService cityService;
     @MockBean
@@ -32,7 +30,7 @@ public class CityServiceIT {
     private City city;
 
     @BeforeEach
-    public void initCity() {
+    public void init() {
         Long id = 1L;
         String name = "Moscow";
         String information = "Moscow in the capital of Russia.";
@@ -51,7 +49,11 @@ public class CityServiceIT {
 
     @Test
     public void testSave() {
-        when(cityService.save(city)).thenReturn(city);
+        Mockito.doReturn(city)
+                .when(cityRepo)
+                .save(city);
+        City saved = cityService.save(city);
+        assertNotNull(saved);
     }
 
     @Test

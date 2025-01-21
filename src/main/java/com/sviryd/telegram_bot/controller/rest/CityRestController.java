@@ -1,4 +1,4 @@
-package com.sviryd.telegram_bot.controller;
+package com.sviryd.telegram_bot.controller.rest;
 
 import com.sviryd.telegram_bot.entity.City;
 import com.sviryd.telegram_bot.service.CityService;
@@ -12,11 +12,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/cities")
-public class CityController {
+public class CityRestController {
     private final CityService cityService;
 
     @Autowired
-    public CityController(CityService cityService) {
+    public CityRestController(CityService cityService) {
         this.cityService = cityService;
     }
 

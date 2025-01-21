@@ -1,8 +1,15 @@
+server:
+  port: 8080
+
 spring:
+  application:
+    name: telegram-boot
+
   datasource:
-    url: jdbc:mysql://localhost:3306/interviewTest?serverTimezone=UTC
+    url: jdbc:h2:mem:test_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;MODE=MYSQL;
     username: root
     password: root
+
   jpa:
     generate-ddl: false
     show-sql: true
@@ -17,6 +24,11 @@ spring:
           order_updates: true
     database: h2
     open-in-view: false
+
+  mvc:
+    pathmatch:
+      matching-strategy: path_pattern_parser
+
   h2:
     console:
       enabled: true
@@ -24,3 +36,8 @@ spring:
       settings:
         trace: false
         web-allow-others: false
+
+telegram:
+  bot:
+    token: ${TELEGRAM_BOT_TOKEN}
+    username: ${TELEGRAM_BOT_USERNAME}
