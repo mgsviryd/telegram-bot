@@ -25,6 +25,7 @@ Completing of OnTravelSolutions assignment
 ---
 
 ## Telegram Bot Configuration
+> ⚠️ Keep this data secured in your real projects.
 - username: `mgsviryd_bot`
 - token: `7574109082:AAHfhyqSe5ywP7Tf6AGASiFHFBhmHsuBCUE`
 - webhook: `/webhook/mgsviryd_bot`
