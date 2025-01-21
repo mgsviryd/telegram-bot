@@ -84,6 +84,9 @@ Paste and edit <your_db_name>, <your_mysql_username>, <your_mysql_password>):
 SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/<your_db_name>?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
 SPRING_DATASOURCE_USERNAME=<your_mysql_username>
 SPRING_DATASOURCE_PASSWORD=<your_mysql_password>
+
+TELEGRAM_BOT_TOKEN=7574109082:AAHfhyqSe5ywP7Tf6AGASiFHFBhmHsuBCUE
+TELEGRAM_BOT_USERNAME=mgsviryd_bot
 ```
 
 ### 4. Check your ports
