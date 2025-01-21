@@ -182,15 +182,15 @@ Accept: application/json
 ### 2. Test Telegram bot
 #### 1. Find bot in Telegram:
 
-@mgsviryd_bot  
+`@mgsviryd_bot`  
 
 #### 2. Send message to bot:
 
-Москва
+`Москва`
 
 #### 3. Check answer:
 
-Не забудьте посетить Красную Площадь. Ну а в ЦУМ можно и не заходить)))
+`Не забудьте посетить Красную Площадь. Ну а в ЦУМ можно и не заходить)))`
 
 ### 3. Inspect ngrok http requests   
 
