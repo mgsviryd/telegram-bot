@@ -4,7 +4,13 @@ Completing of OnTravelSolutions assignment
 ---
 
 ## Introduction
-Use Java 17, implement REST controllers, attach JPA repositories, connect to MySQL datasource, get ngrok public URL
+- use `Java 17`
+- create a `Spring Boot 3` project
+- implement `REST` controllers
+- attach `JPA` repositories
+- connect to `MySQL` datasource
+- generate `ngrok` public URL
+- containerize an application using `Docker`
 
 ---
 
@@ -14,7 +20,7 @@ Use Java 17, implement REST controllers, attach JPA repositories, connect to MyS
 ---
 
 ## Features
-- Create Telegram bot, respond to user on queries in real-time.
+- Create Telegram bot, respond to user requests in real-time.
 
 ---
 
