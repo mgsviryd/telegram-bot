@@ -191,6 +191,10 @@ Check answer:
 
 > Не забудьте посетить Красную Площадь. Ну а в ЦУМ можно и не заходить)))
 
+### 3. Inspect ngrok http requests   
+
+http://localhost:4040/inspect/http
+
 ---
 
 ## Terminate (via command-line)
