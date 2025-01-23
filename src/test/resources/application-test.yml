@@ -1,5 +1,5 @@
 host:
-  publicURL: http://localhost:8080
+  publicURL: ${HOST_PUBLIC_URL}
 
 server:
   port: 8080

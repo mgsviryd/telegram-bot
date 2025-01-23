@@ -20,7 +20,7 @@ import static org.mockito.Mockito.verify;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = {CityService.class})
-@ActiveProfiles("it")
+@ActiveProfiles("test")
 public class CityServiceTest {
     @Autowired
     private CityService cityService;
