@@ -1,5 +1,5 @@
 host:
-  publicURL: ${HOST_PUBLIC_URL}
+  domain: ${HOST_DOMAIN}
 
 server:
   port: 8080
@@ -41,5 +41,12 @@ spring:
 
 telegram:
   bot:
+    sender:
+      host: https://api.telegram.org/bot
+      sendMessagePath: /sendMessage
+      setWebhookPath: /setWebhook
+  city-guide-bot:
     token: ${TELEGRAM_BOT_TOKEN}
     username: ${TELEGRAM_BOT_USERNAME}
+
+

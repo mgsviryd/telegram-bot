@@ -42,7 +42,11 @@ public class CityRestControllerTest {
     private City city;
 
     @BeforeEach
-    public void initCity() {
+    public void beforeEach() {
+        initCity();
+    }
+
+    private void initCity() {
         Long id = 1L;
         String name = "Moscow";
         String information = "Moscow in the capital of Russia.";

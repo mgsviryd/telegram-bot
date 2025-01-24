@@ -1,4 +1,4 @@
-package com.sviryd.telegram_bot.config;
+package com.sviryd.telegram_bot.config.telegram;
 
 
 import lombok.Getter;
@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 @Setter
 @Configuration
-@ConfigurationProperties(prefix = "telegram.bot")
-public class TelegramBotConfig {
+@ConfigurationProperties(prefix = "telegram.city-guide-bot")
+public class CityGuideBotTelegramConfig {
     private String token;
     private String username;
 }

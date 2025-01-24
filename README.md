@@ -103,20 +103,24 @@ nc -zv localhost 8080
 ```
 **Status:** 🚫 Refused
 
-### 6. Start ngrok to receive public URL
+### 6. Start ngrok to receive domain
 ```shell
 ngrok http http://localhost:8080
 ```
 
-Now http://localhost:8080 forwarding to **public URL**:
-
-Template:
-
-> http://<your-ngrok-subdomain>.ngrok.io
+Now http://localhost:8080 forwarding to **domain**:
 
 Example:
 
 > https://784b-2001-41d0-700-7611-00.ngrok-free.app
+
+
+You can create ngrok [stable domain](https://dashboard.ngrok.com/domains). And use it:
+
+Example:
+```shell
+ngrok http http://localhost:8080 --url=mature-outgoing-alpaca.ngrok-free.app
+```
 ---
 
 ## Setup (via command-line)
@@ -165,15 +169,14 @@ docker run --name your-container-name -p 8080:8080 your-image-namе
 
 ## Application Testing
 ### 1. Add city using REST request
-```http request
-POST http://localhost:8080/cities
-Content-Type: application/json
-Accept: application/json
-
-{
+```shell
+curl -X POST  https://mature-outgoing-alpaca.ngrok-free.app/cities \
+-H "Content-Type: application/json" \
+-H "Accept: application/json" \
+-d '{
   "name": "Москва",
   "information": "Не забудьте посетить Красную Площадь. Ну а в ЦУМ можно и не заходить)))"
-}
+}'
 ```
 
 ### 2. Test Telegram bot

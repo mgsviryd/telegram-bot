@@ -10,5 +10,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "host")
 public class HostConfig {
-    private String publicURL;
+    private String domain;
 }
