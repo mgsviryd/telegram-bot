@@ -32,5 +32,5 @@ public class City implements Serializable {
 
     @NotBlank(message = "Information cannot be blank.")
     @Size(max = 2048)
-    private String information;
+    private String info;
 }

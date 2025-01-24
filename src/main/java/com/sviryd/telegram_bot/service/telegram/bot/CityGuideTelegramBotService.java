@@ -5,6 +5,8 @@ import com.sviryd.telegram_bot.vo.TelegramUpdateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Locale;
+
 @Service
 public class CityGuideTelegramBotService {
     private final TelegramBotSenderService senderService;
@@ -21,7 +23,8 @@ public class CityGuideTelegramBotService {
         if (message.getChat() != null) {
             Long chatId = message.getChat().getId();
             String text = message.getText();
-            String information = cityGuideService.getCityInformation(text);
+            Locale locale = new Locale(message.getFrom().getLanguageCode());
+            String information = cityGuideService.getCityInfo(text, locale);
             senderService.sendMessage(botToken, chatId, information);
         }
     }

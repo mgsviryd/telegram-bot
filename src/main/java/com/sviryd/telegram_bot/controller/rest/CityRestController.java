@@ -22,12 +22,17 @@ public class CityRestController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public City save(@Valid @RequestBody City city) {
+    public City save(
+            @Valid @RequestBody City city
+    ) {
         return cityService.save(city);
     }
 
     @PutMapping("/{id}")
-    public City update(@Valid @RequestBody City city, @PathVariable Long id) {
+    public City update(
+            @Valid @RequestBody City city,
+            @PathVariable Long id
+    ) {
         Optional<City> cityOptional = cityService.findById(id);
         cityOptional.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "The city is not found."));
         city.setId(id);
@@ -35,20 +40,26 @@ public class CityRestController {
     }
 
     @GetMapping("/{id}")
-    public City findById(@PathVariable Long id) {
+    public City findById(
+            @PathVariable Long id
+    ) {
         Optional<City> cityOptional = cityService.findById(id);
         return cityOptional.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "The city is not found."));
     }
 
     @GetMapping("/filtering/byName/{name}")
-    public City findByName(@PathVariable String name) {
+    public City findByName(
+            @PathVariable String name
+    ) {
         Optional<City> cityOptional = cityService.findByName(name);
         return cityOptional.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "The city is not found."));
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void deleteById(@PathVariable Long id) {
+    public void deleteById(
+            @PathVariable Long id
+    ) {
         cityService.deleteById(id);
     }
 }

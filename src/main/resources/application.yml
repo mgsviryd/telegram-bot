@@ -49,4 +49,9 @@ telegram:
     token: ${TELEGRAM_BOT_TOKEN}
     username: ${TELEGRAM_BOT_USERNAME}
 
+messages-source:
+  basename: 'lang/messages'
+  encoding: 'UTF-8'
+  defaultLocale: 'en_US'
+
 

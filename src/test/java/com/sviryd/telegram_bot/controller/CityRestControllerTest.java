@@ -95,7 +95,7 @@ public class CityRestControllerTest {
      */
     @Test
     public void testSaveFailValidation() throws Exception {
-        city.setInformation(null);
+        city.setInfo(null);
         mvc.perform(post("/cities")
                         .content(new ObjectMapper().writeValueAsString(city))
                         .contentType(MediaType.APPLICATION_JSON)
@@ -115,7 +115,7 @@ public class CityRestControllerTest {
         City oldCity = new City();
         oldCity.setId(city.getId());
         oldCity.setName(city.getName());
-        oldCity.setInformation("Moscow is the biggest city in Russia.");
+        oldCity.setInfo("Moscow is the biggest city in Russia.");
         mvc.perform(put("/cities/{id}", oldCity.getId())
                         .content(new ObjectMapper().writeValueAsString(oldCity))
                         .contentType(MediaType.APPLICATION_JSON)
@@ -123,7 +123,7 @@ public class CityRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("id").value(oldCity.getId()))
                 .andExpect(MockMvcResultMatchers.jsonPath("name").value(oldCity.getName()))
-                .andExpect(MockMvcResultMatchers.jsonPath("information").value(oldCity.getInformation()));
+                .andExpect(MockMvcResultMatchers.jsonPath("information").value(oldCity.getInfo()));
         mvc.perform(put("/cities/{id}", this.city.getId())
                         .content(new ObjectMapper().writeValueAsString(this.city))
                         .contentType(MediaType.APPLICATION_JSON)
@@ -131,8 +131,8 @@ public class CityRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("id").value(this.city.getId()))
                 .andExpect(MockMvcResultMatchers.jsonPath("name").value(this.city.getName()))
-                .andExpect(MockMvcResultMatchers.jsonPath("information").value(this.city.getInformation()))
-                .andExpect(MockMvcResultMatchers.jsonPath("information", not(oldCity.getInformation())));
+                .andExpect(MockMvcResultMatchers.jsonPath("information").value(this.city.getInfo()))
+                .andExpect(MockMvcResultMatchers.jsonPath("information", not(oldCity.getInfo())));
     }
 
     /**
@@ -149,7 +149,7 @@ public class CityRestControllerTest {
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("name", is(city.getName())))
-                .andExpect(jsonPath("information", is(city.getInformation())));
+                .andExpect(jsonPath("information", is(city.getInfo())));
     }
 
     /**
@@ -174,7 +174,7 @@ public class CityRestControllerTest {
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("name", is(city.getName())))
-                .andExpect(jsonPath("information", is(city.getInformation())));
+                .andExpect(jsonPath("information", is(city.getInfo())));
     }
 
     /**

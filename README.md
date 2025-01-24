@@ -175,7 +175,7 @@ curl -X POST  https://mature-outgoing-alpaca.ngrok-free.app/cities \
 -H "Accept: application/json" \
 -d '{
   "name": "Москва",
-  "information": "Не забудьте посетить Красную Площадь. Ну а в ЦУМ можно и не заходить)))"
+  "info": "Не забудьте посетить Красную Площадь. Ну а в ЦУМ можно и не заходить)))"
 }'
 ```
 
