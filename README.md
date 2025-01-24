@@ -24,14 +24,6 @@ Completing of OnTravelSolutions assignment
 
 ---
 
-## Telegram Bot Configuration
-> ⚠️ Keep this data secured in your real projects.
-- username: `mgsviryd_bot`
-- token: `7574109082:AAHfhyqSe5ywP7Tf6AGASiFHFBhmHsuBCUE`
-- webhook: `/webhook/mgsviryd_bot`
-
----
-
 ## Environment
 
 ### Mac OS
@@ -64,17 +56,26 @@ Completing of OnTravelSolutions assignment
 
 ## Pre-setup
 
-### 1. Clone git repository
+### 1. Telegram bot configuration
+You can create your Telegram bot using [@BotFather](https://telegram.me/BotFather).
+
+  Bot configuration:
+- username: `mgsviryd_bot`
+- token: `7574109082:AAHfhyqSe5ywP7Tf6AGASiFHFBhmHsuBCUE`
+> ⚠️ Keep token secured in your real project.
+
+
+### 2. Clone git repository
 ```shell
 git clone https://github.com/mgsviryd/telegram-bot.git    
 ```
 
-### 2. Go to directory
+### 3. Go to directory
 ```shell
 cd telegram-bot
 ```
 
-### 3. Create .env file and set environment variables
+### 4. Create .env file and set environment variables
 ```shell
 nano .env
 ```
@@ -85,11 +86,11 @@ SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/<your_db_name>?serverTimezone=
 SPRING_DATASOURCE_USERNAME=<your_mysql_username>
 SPRING_DATASOURCE_PASSWORD=<your_mysql_password>
 
-TELEGRAM_BOT_TOKEN=7574109082:AAHfhyqSe5ywP7Tf6AGASiFHFBhmHsuBCUE
 TELEGRAM_BOT_USERNAME=mgsviryd_bot
+TELEGRAM_BOT_TOKEN=7574109082:AAHfhyqSe5ywP7Tf6AGASiFHFBhmHsuBCUE
 ```
 
-### 4. Check your ports
+### 5. Check your ports
 By default, we use next ports:
 - 3306 - for mysql (must be open),
 - 8080 - for backend (must be close),
@@ -102,7 +103,7 @@ nc -zv localhost 8080
 ```
 **Status:** 🚫 Refused
 
-### 5. Start ngrok to receive public URL
+### 6. Start ngrok to receive public URL
 ```shell
 ngrok http http://localhost:8080
 ```
@@ -116,20 +117,6 @@ Template:
 Example:
 
 > https://784b-2001-41d0-700-7611-00.ngrok-free.app
-
-### 6. Set Telegram webhook
-Tell Telegram relative URL path to send updates for your bot - webhook.
-
-Template:
-```
-curl -X POST "https://api.telegram.org/bot<token>/setWebhook" \
--d "url=<public URL><webhook>"
-```
-Example:
-```shell
-curl -X POST "https://api.telegram.org/bot7574109082:AAHfhyqSe5ywP7Tf6AGASiFHFBhmHsuBCUE/setWebhook" \
--d "url=https://784b-2001-41d0-700-7611-00.ngrok-free.app/webhook/mgsviryd_bot"
-```
 ---
 
 ## Setup (via command-line)
